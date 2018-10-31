@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./overlay.js"></script>
+  <link rel="stylesheet" type="text/css" href="./overlay.css">
+  <title>Overlay Window Demo</title>
+</head>
+<body style="font-family: sans-serif; font-size: 200%; background-color: lightblue; margin: 0; box-sizing: border-box;"
+  onload="onPageLoaded();">
+  <!-- overlay window -->
+  <div id="overlay">
+    <div id="overlay-cross">X</div>
+    <div>
+      <h2 id="overlay-title">Recusandae Saepe</h2>
+      <p id="overlay-message">Irure incididunt ex Lorem nisi consequat laborum.</p>
+      <div>
+        <div id="overlay-button-1">1</div>
+        <div id="overlay-button-2">2</div>
+        <div id="overlay-button-3">3</div>
+        <div id="overlay-button-4">4</div>
+      </div>
+    </div>
+  </div>
+  <!-- tranparent pane in order to make overlay quasi modal -->
+  <div id="overlay-click-catcher"></div>
+
+  <div onclick="_showOverlay();">
+    <div id="header" style="font-size: 0.5em; background-color: lightgray; padding: 20px;" onclick="event.stopPropagation();">
+      <pre>
+        showOverlay function - its param object:
+          cross: true|false (undefined: true)
+          title: string
+          message: string
+          button1 to button4: buttonObject
+           with buttonObject:
+            text: string
+            callback: function, if this function returns false, overlay closing is not called
+          timeout: positive integer in ms
+          modal: true|false (undefined: true)
+      </pre>
+      <label for="show-overlay-param-object">Object passed to showOverlay:</label>
+      <input type="text" id="show-overlay-param-object" name="show-overlay-param-object" size="100" />
+      <button onclick="resetShowOverlayParamObject();">reset</button>
+      <p style="font-weight:bold; font-style: oblique;">type anywhere outside this box to trigger overlay</p>
+    </div>
+    <div id="contents" style="overflow: auto; padding: 20px;">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae saepe et molestias delectus nemo. Magnam,
+        debitis
+        necessitatibus illo adipisci nihil consectetur voluptate animi tempore totam rem vitae esse quo quibusdam.</p>
+      <p>
+        In aute adipisicing incididunt laboris. Voluptate reprehenderit ullamco minim sunt. Officia elit laboris dolore
+        tempor quis
+        nulla.
+      </p>
+      <p>
+        Cillum cillum quis irure mollit excepteur culpa ullamco elit ipsum adipisicing irure labore nostrud. Velit
+        irure
+        incididunt
+        esse ut et cillum laborum aliquip dolor ea occaecat eiusmod. Dolor magna do minim magna aute cillum aute
+        consectetur
+        ipsum dolore cupidatat. Sint sit commodo sint elit anim esse ullamco ad. Do dolor ad Lorem commodo nulla
+        consequat
+        ea sint veniam magna sit commodo. Quis dolor id eiusmod minim adipisicing culpa. Ullamco do esse cillum fugiat
+        est
+        irure officia nisi.
+
+      </p>
+      <p>
+        Excepteur magna labore ad anim. Ex do qui irure nostrud laborum id proident mollit occaecat ullamco. Ex aute
+        cillum aute
+        amet. Enim eiusmod velit officia proident proident incididunt incididunt voluptate in consectetur. Laborum ea
+        esse
+        velit dolor cillum labore aute veniam id do qui incididunt tempor. Aliquip aute velit commodo voluptate in
+        incididunt.
+        Cillum in enim in ea ut anim irure consequat non culpa dolor sit veniam.
+
+      </p>
+      <p>
+        Ullamco fugiat excepteur tempor do nulla sunt ullamco aliquip ad Lorem. Minim aliquip eiusmod proident
+        adipisicing commodo
+        velit officia velit non occaecat cillum excepteur. Mollit nisi esse ipsum eiusmod laborum sint aliqua qui
+        fugiat
+        nisi
+        irure ipsum occaecat pariatur. Mollit laborum adipisicing quis ipsum consectetur exercitation cillum officia
+        voluptate.
+
+      </p>
+      <p>
+        Nostrud in amet pariatur deserunt eiusmod sit magna cillum consequat dolor aliquip excepteur Lorem. Sunt Lorem
+        reprehenderit
+        aliqua est ea et do excepteur sunt. Culpa eu eiusmod duis dolore tempor culpa. Qui esse adipisicing quis ea
+        tempor
+        fugiat laboris aliquip quis do exercitation aliquip. Quis nulla fugiat culpa nulla mollit.
+
+      </p>
+      <p>
+        Esse reprehenderit sit laborum proident duis consequat enim. Commodo incididunt sint aliqua aute voluptate quis
+        magna amet.
+        Ad id ex incididunt aute enim ut nisi pariatur nostrud reprehenderit consectetur adipisicing qui tempor. Veniam
+        deserunt
+        esse consequat laboris minim dolore pariatur tempor exercitation esse ullamco qui laborum est. Ea excepteur et
+        ut
+        laboris
+        cillum aliquip dolore non in. Ea ex id officia duis aute non. Enim consectetur qui adipisicing magna incididunt
+        est
+        consectetur cupidatat mollit.
+
+      </p>
+      <p>
+        Deserunt labore laboris commodo est ad Lorem laboris dolore enim nulla adipisicing magna. Amet do deserunt
+        eiusmod excepteur
+        eiusmod consequat. Excepteur aliquip labore cillum exercitation ut id mollit in deserunt adipisicing.
+      </p>
+      <p>
+        Ad minim consequat veniam voluptate occaecat. Id sunt anim proident voluptate labore. Culpa ullamco duis ex ad
+        elit aute
+        dolore do nostrud enim reprehenderit mollit et. Excepteur Lorem proident ullamco magna laboris consequat enim
+        quis.
+        Nisi aliquip aliquip cupidatat dolore enim. Ut pariatur amet deserunt laboris minim incididunt do irure
+        consectetur
+        consectetur est aliquip. Ad laborum incididunt nostrud Lorem dolore cillum esse qui.
+
+      </p>
+      <p>
+        Id ipsum aliquip consequat fugiat pariatur ea tempor ea tempor reprehenderit anim ad elit esse. Do sunt sunt
+        nostrud occaecat
+        dolore ut ut incididunt non eiusmod Lorem irure aliqua adipisicing. Nulla consectetur enim ea minim nulla
+        cupidatat
+        elit quis minim commodo.
+      </p>
+      <p>
+        Nulla quis exercitation pariatur sunt. Sint mollit cillum ex velit velit eu dolore cupidatat deserunt esse
+        velit
+        eiusmod
+        veniam do. Id deserunt nulla mollit velit enim. Aute id deserunt pariatur cillum consequat consectetur culpa
+        esse.
+      </p>
+      <p>
+        Quis incididunt incididunt anim nostrud laborum ad nulla exercitation tempor exercitation velit ad pariatur
+        enim.
+        Ullamco
+        in sit consectetur occaecat officia nulla esse. Nostrud officia qui non cillum nostrud minim sit id. Magna
+        nostrud
+        eu Lorem non proident aliquip do ad veniam cupidatat laboris esse proident sunt. Magna ullamco id ullamco
+        deserunt
+        eiusmod labore. Aliquip enim commodo qui labore sit est.
+
+      </p>
+      <p>
+        Anim labore minim et aliquip culpa consequat quis adipisicing laboris laboris anim mollit. Aliquip incididunt
+        dolore laborum
+        proident exercitation deserunt sunt veniam mollit est ut mollit aute. Mollit quis elit irure excepteur velit
+        aliqua.
+        Laborum exercitation sunt laboris Lorem consequat minim Lorem culpa pariatur deserunt excepteur sint id qui.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

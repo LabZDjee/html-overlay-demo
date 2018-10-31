@@ -16,7 +16,7 @@ function defCb() {
 function resetShowOverlayParamObject() {
   'use strict';
   const input = document.getElementById("show-overlay-param-object");
-  input.value = `{timer: 10000, cross: true, title: "title", message: "message (with details)", button1: {text: "btn1", callback: defCb}, button2: {text: "btn2", callback: defCb}, button3: {text: "btn3", callback: defCb}, button4: {text: "btn4", callback: defCb}}`;
+  input.value = `{timeout: 10000, cross: true, title: "title", message: "message (with details)", button1: {text: "btn1", callback: defCb}, button2: {text: "btn2", callback: defCb}, button3: {text: "btn3", callback: defCb}, button4: {text: "btn4", callback: defCb}}`;
 }
 
 function adjustContentsHeight() {
@@ -84,7 +84,8 @@ function showOverlay(paramObject) {
   function setOverlayTimeout() {
     return setTimeout(() => {
       ovl.style.transform = "rotateX(90deg)";
-      ovl.removeEventListener(onMouseMove);
+      ovlClickCatcher.style.display = "";
+      ovl.removeEventListener("mousemove", onMouseMove);
     }, timeOutValue);
   }
 

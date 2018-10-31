@@ -123,9 +123,9 @@ function showOverlay(paramObject) {
     };
   }
 
-  if (typeof paramObject.timer !== "undefined" && typeof paramObject.timer === "number" &&
-    Number.isInteger(paramObject.timer) && paramObject.timer >= 0) {
-    timeOutValue = paramObject.timer;
+  if (typeof paramObject.timeout !== "undefined" && typeof paramObject.timeout === "number" &&
+    Number.isInteger(paramObject.timeout) && paramObject.timeout >= 0) {
+    timeOutValue = paramObject.timeout;
     timerId = setOverlayTimeout(timeOutValue);
     ovl.addEventListener("mousemove", onMouseMove);
   } else {

@@ -1,10 +1,9 @@
-
 /* debug and demo stuff */
 /* exported defCb */
 function defCb() {
   'use strict';
   const randomVal = Math.random();
-  if (randomVal < 0.2)   {
+  if (randomVal < 0.2) {
     alert("defCb called - will return false");
     return false;
   } else if (randomVal < 0.6) {
@@ -45,7 +44,9 @@ function _showOverlay() {
   const value = `(${input.value})`;
   let param = null;
   try {
+    /* jshint -W061 */
     param = eval(value);
+    /* jshint +W061 */
   } catch (e) {
     alert("syntax error in input parameter to \"showOverlay\"");
     return;
@@ -112,17 +113,17 @@ function showOverlay(paramObject) {
       let closeOverlayFlag = true;
       try {
         const returnVal = paramObject[buttonStr].callback();
-        if (returnVal === false)
+        if (returnVal === false) {
           closeOverlayFlag = false;
-      }
-      catch (e) {
-      }
-      if (closeOverlayFlag)
+        }
+      } catch (e) {}
+      if (closeOverlayFlag) {
         closeOverlay();
-    }
-  };
+      }
+    };
+  }
 
-  if (typeof paramObject.timer != "undefined" && typeof paramObject.timer == "number" &&
+  if (typeof paramObject.timer !== "undefined" && typeof paramObject.timer === "number" &&
     Number.isInteger(paramObject.timer) && paramObject.timer >= 0) {
     timeOutValue = paramObject.timer;
     timerId = setOverlayTimeout(timeOutValue);
@@ -130,60 +131,61 @@ function showOverlay(paramObject) {
   } else {
     timerId = null;
   }
-  if (typeof paramObject.cross == "undefined" || paramObject.cross) {
+  if (typeof paramObject.cross === "undefined" || paramObject.cross) {
     ovlCross.style.display = "";
     ovlCross.onclick = overlayCrossClicked;
   } else {
     ovlCross.style.display = "none";
   }
-  if (typeof paramObject.title != "undefined" && typeof paramObject.title == "string" && paramObject.title != "") {
+  if (typeof paramObject.title !== "undefined" && typeof paramObject.title === "string" && paramObject.title !== "") {
     ovlTitle.style.display = "";
     ovlTitle.innerHTML = paramObject.title;
   } else {
     ovlTitle.style.display = "none";
   }
-  if (typeof paramObject.message != "undefined" && typeof paramObject.message == "string" && paramObject.message != "") {
+  if (typeof paramObject.message !== "undefined" && typeof paramObject.message === "string" && paramObject.message !== "") {
     ovlMessage.style.display = "";
     ovlMessage.innerHTML = paramObject.message;
   } else {
     ovlMessage.style.display = "none";
   }
-  if (typeof paramObject.button1 != "undefined" && typeof paramObject.button1.text != "undefined" &&
-    typeof paramObject.button1.text == "string" && paramObject.button1.text != "") {
+  if (typeof paramObject.button1 !== "undefined" && typeof paramObject.button1.text !== "undefined" &&
+    typeof paramObject.button1.text === "string" && paramObject.button1.text !== "") {
     ovlButton1.style.display = "";
     ovlButton1.innerHTML = paramObject.button1.text;
     ovlButton1.onclick = makeClickedButtonCallback("button1");
   } else {
     ovlButton1.style.display = "none";
   }
-  if (typeof paramObject.button2 != "undefined" && typeof paramObject.button2.text != "undefined" &&
-    typeof paramObject.button2.text == "string" && paramObject.button2.text != "") {
+  if (typeof paramObject.button2 !== "undefined" && typeof paramObject.button2.text !== "undefined" &&
+    typeof paramObject.button2.text === "string" && paramObject.button2.text !== "") {
     ovlButton2.style.display = "";
     ovlButton2.innerHTML = paramObject.button2.text;
     ovlButton2.onclick = makeClickedButtonCallback("button2");
   } else {
     ovlButton2.style.display = "none";
   }
-  if (typeof paramObject.button3 != "undefined" && typeof paramObject.button3.text != "undefined" &&
-    typeof paramObject.button3.text == "string" && paramObject.button3.text != "") {
+  if (typeof paramObject.button3 !== "undefined" && typeof paramObject.button3.text !== "undefined" &&
+    typeof paramObject.button3.text === "string" && paramObject.button3.text !== "") {
     ovlButton3.style.display = "";
     ovlButton3.innerHTML = paramObject.button3.text;
     ovlButton3.onclick = makeClickedButtonCallback("button3");
   } else {
     ovlButton3.style.display = "none";
   }
-  if (typeof paramObject.button4 != "undefined" && typeof paramObject.button4.text != "undefined" &&
-    typeof paramObject.button4.text == "string" && paramObject.button4.text != "") {
+  if (typeof paramObject.button4 !== "undefined" && typeof paramObject.button4.text !== "undefined" &&
+    typeof paramObject.button4.text === "string" && paramObject.button4.text !== "") {
     ovlButton4.style.display = "";
     ovlButton4.innerHTML = paramObject.button4.text;
     ovlButton4.onclick = makeClickedButtonCallback("button4");
   } else {
     ovlButton4.style.display = "none";
   }
-  if (typeof paramObject.modal != "undefined" && paramObject.modal === false) {
+  if (typeof paramObject.modal !== "undefined" && paramObject.modal === false) {
     modal = false;
   }
-  ovl.style.transform = "rotateX(0deg)";  // display overlay
-  if(modal)
-   ovlClickCatcher.style.display = "block";
+  ovl.style.transform = "rotateX(0deg)"; // display overlay
+  if (modal) {
+    ovlClickCatcher.style.display = "block";
+  }
 }

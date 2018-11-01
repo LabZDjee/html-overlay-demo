@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,17 @@
   <link rel="stylesheet" type="text/css" href="./overlay.css">
   <title>Overlay Window Demo</title>
 </head>
+
 <body style="font-family: sans-serif; font-size: 200%; background-color: lightblue; margin: 0; box-sizing: border-box;"
   onload="onPageLoaded();">
-  <!-- overlay window -->
+  <!-- *** Overlay section *** -->
   <div id="overlay">
     <div id="overlay-cross">X</div>
     <div>
-      <h2 id="overlay-title">Recusandae Saepe</h2>
-      <p id="overlay-message">Irure incididunt ex Lorem nisi consequat laborum.</p>
+      <div id="overlay-title">Recusandae Saepe</div>
+      <div>
+        <p id="overlay-message">Irure incididunt ex Lorem nisi consequat laborum.</p>
+      </div>
       <div>
         <div id="overlay-button-1">1</div>
         <div id="overlay-button-2">2</div>
@@ -25,6 +29,7 @@
   </div>
   <!-- tranparent pane in order to make overlay quasi modal -->
   <div id="overlay-click-catcher"></div>
+  <!-- *** End of overlay section *** -->
 
   <div onclick="_showOverlay();">
     <div id="header" style="font-size: 0.5em; background-color: lightgray; padding: 20px;" onclick="event.stopPropagation();">
@@ -158,4 +163,5 @@
     </div>
   </div>
 </body>
+
 </html>

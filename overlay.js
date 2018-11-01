@@ -81,35 +81,35 @@ function showOverlay(paramObject) {
   let timeOutValue;
   let modal = true;
 
-  function setOverlayTimeout() {
+  function _setOverlayTimeout() {
     return setTimeout(() => {
       ovl.style.transform = "rotateX(90deg)";
       ovlClickCatcher.style.display = "";
-      ovl.removeEventListener("mousemove", onMouseMove);
+      ovl.removeEventListener("mousemove", _onMouseMove);
     }, timeOutValue);
   }
 
-  function onMouseMove() {
+  function _onMouseMove() {
     if (timerId !== null) {
       clearTimeout(timerId);
-      timerId = setOverlayTimeout();
+      timerId = _setOverlayTimeout();
     }
   }
 
-  function closeOverlay() {
+  function _closeOverlay() {
     ovl.style.transform = "rotateX(90deg)";
     ovlClickCatcher.style.display = "";
     if (timerId !== null) {
       clearTimeout(timerId);
-      ovl.removeEventListener("mousemove", onMouseMove);
+      ovl.removeEventListener("mousemove", _onMouseMove);
     }
   }
 
-  function overlayCrossClicked() {
-    closeOverlay();
+  function _overlayCrossClicked() {
+    _closeOverlay();
   }
 
-  function makeClickedButtonCallback(buttonStr) {
+  function _makeClickedButtonCallback(buttonStr) {
     return function () {
       let closeOverlayFlag = true;
       try {
@@ -119,7 +119,7 @@ function showOverlay(paramObject) {
         }
       } catch (e) {}
       if (closeOverlayFlag) {
-        closeOverlay();
+        _closeOverlay();
       }
     };
   }
@@ -127,14 +127,14 @@ function showOverlay(paramObject) {
   if (typeof paramObject.timeout !== "undefined" && typeof paramObject.timeout === "number" &&
     Number.isInteger(paramObject.timeout) && paramObject.timeout >= 0) {
     timeOutValue = paramObject.timeout;
-    timerId = setOverlayTimeout(timeOutValue);
-    ovl.addEventListener("mousemove", onMouseMove);
+    timerId = _setOverlayTimeout(timeOutValue);
+    ovl.addEventListener("mousemove", _onMouseMove);
   } else {
     timerId = null;
   }
   if (typeof paramObject.cross === "undefined" || paramObject.cross) {
     ovlCross.style.display = "";
-    ovlCross.onclick = overlayCrossClicked;
+    ovlCross.onclick = _overlayCrossClicked;
   } else {
     ovlCross.style.display = "none";
   }
@@ -154,7 +154,7 @@ function showOverlay(paramObject) {
     typeof paramObject.button1.text === "string" && paramObject.button1.text !== "") {
     ovlButton1.style.display = "";
     ovlButton1.innerHTML = paramObject.button1.text;
-    ovlButton1.onclick = makeClickedButtonCallback("button1");
+    ovlButton1.onclick = _makeClickedButtonCallback("button1");
   } else {
     ovlButton1.style.display = "none";
   }
@@ -162,7 +162,7 @@ function showOverlay(paramObject) {
     typeof paramObject.button2.text === "string" && paramObject.button2.text !== "") {
     ovlButton2.style.display = "";
     ovlButton2.innerHTML = paramObject.button2.text;
-    ovlButton2.onclick = makeClickedButtonCallback("button2");
+    ovlButton2.onclick = _makeClickedButtonCallback("button2");
   } else {
     ovlButton2.style.display = "none";
   }
@@ -170,7 +170,7 @@ function showOverlay(paramObject) {
     typeof paramObject.button3.text === "string" && paramObject.button3.text !== "") {
     ovlButton3.style.display = "";
     ovlButton3.innerHTML = paramObject.button3.text;
-    ovlButton3.onclick = makeClickedButtonCallback("button3");
+    ovlButton3.onclick = _makeClickedButtonCallback("button3");
   } else {
     ovlButton3.style.display = "none";
   }
@@ -178,7 +178,7 @@ function showOverlay(paramObject) {
     typeof paramObject.button4.text === "string" && paramObject.button4.text !== "") {
     ovlButton4.style.display = "";
     ovlButton4.innerHTML = paramObject.button4.text;
-    ovlButton4.onclick = makeClickedButtonCallback("button4");
+    ovlButton4.onclick = _makeClickedButtonCallback("button4");
   } else {
     ovlButton4.style.display = "none";
   }

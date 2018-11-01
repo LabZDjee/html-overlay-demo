@@ -1,95 +1,107 @@
-#overlay {
-  position: fixed;
-  display: block;
-  width: 80%;
-  top: 10%;
-  left: 10%;
-  right: 10%;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  z-index: 20;
-  text-align: center;
-  font-size: 0.8em;
-  padding: 3px;
-  overflow: auto;
-  transform: rotateX(90deg);
-  transition: transform 1s cubic-bezier(0.4, 0, 0.5, 2);
-}
+  :root {
+    --overlay--color: white;
+    --overlay-bg-color: rgba(0, 0, 0, 0.7);
+    --overlay-border-color: ivory;
+    --overlay-click-catcher-bg-color: rgba(80, 80, 0, 0.1);
+    --overlay-cross-hover-color: red;
+    --overlay-button-color: darkgray;
+    --overlay-button-bg-color: white;
+    --overlay-button-hover-color: black;
+  }
 
-#overlay-click-catcher {
-  position: fixed;
-  display: none;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(80, 80, 0, 0.1);
-  z-index: 10;
-}
-
-@media screen and (max-height:350px) {
   #overlay {
+    position: fixed;
+    display: block;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    background-color: var(--overlay-bg-color);
+    color: var(--overlay--color);
+    z-index: 20;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 3px;
+    overflow: auto;
+    transform: rotateX(90deg);
+    transition: transform 1s cubic-bezier(0.4, 0, 0.5, 2);
+  }
+
+  /* mid-layer to prevent user from clicking in the areas outside of the overlay dialog */
+  #overlay-click-catcher {
+    position: fixed;
+    display: none;
     top: 0;
-  }
-}
-
-@media screen and (max-width:600px) {
-  #overlay {
-    left: 0;
     right: 0;
-    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: var(--overlay-click-catcher-bg-color);
+    z-index: 19;
   }
-}
 
-#overlay>div:nth-child(1) {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  font-size: 200%;
-  cursor: pointer;
-}
+  @media screen and (max-height:350px) {
+    #overlay {
+      top: 0;
+    }
+  }
 
-#overlay>div:nth-child(1):hover {
-  color: red;
-}
+  @media screen and (max-width:600px) {
+    #overlay {
+      left: 0;
+      right: 0;
+      width: 100%;
+    }
+  }
 
-#overlay>div:nth-child(n+2) {
-  border: ivory solid;
-  padding: 3px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 10px;
-}
+  /* cross */
+  #overlay>div:nth-child(1) {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 200%;
+    cursor: pointer;
+  }
 
-#overlay>div:nth-child(n+2)>*:last-child {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  width: 50%;
-}
+  #overlay>div:nth-child(1):hover {
+    color: var(--overlay-cross-hover-color);
+  }
 
-@media screen and (max-width:800px) {
+  /* viewport of the overlay */
+  #overlay>div:nth-child(n+2) {
+    border: var(--overlay-border-color) solid 2px;
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+  }
+
+  /* button group */
   #overlay>div:nth-child(n+2)>*:last-child {
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
   }
-}
 
-#overlay>div:nth-child(n+2)>*:last-child>* {
-  background-color: white;
-  color: darkgray;
-  margin: 20px;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
+  @media screen and (max-width:800px) {
+    #overlay>div:nth-child(n+2)>*:last-child {
+      width: 100%;
+    }
+  }
 
-#overlay>div:nth-child(n+2)>*:last-child>*:hover {
-  color: black;
-}
+  /* buttons */
+  #overlay>div:nth-child(n+2)>*:last-child>* {
+    color: var(--overlay-button-color);
+    background-color: var(--overlay-button-bg-color);
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
 
-.overlayFlexItem {
-  overflow-wrap: break-word;
-}
+  #overlay>div:nth-child(n+2)>*:last-child>*:hover {
+    color: var(--overlay-button-hover-color);
+  }

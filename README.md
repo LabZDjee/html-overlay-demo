@@ -8,7 +8,7 @@ I's also possible to add an action function to those buttons and decide whether 
 
 ## Online Demo
 
-An demo, loosely coupled to this code, can be seen here: [codepen.io/Djee/pen/qJpxYP](https://codepen.io/Djee/pen/qJpxYP)
+A demo, loosely coupled to this code, can be seen here: [codepen.io/Djee/pen/qJpxYP](https://codepen.io/Djee/pen/qJpxYP)
 
 ## Bonus
 
